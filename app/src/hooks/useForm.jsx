@@ -1,7 +1,7 @@
 import React from "react";
 const types = {
     name: {
-        regexp: /^[a-zA-Z]{5,}$/,
+        regexp: /^[a-zA-Z ]{5,}$/,
         error: "* Preencha um nome válido"
     },
     email: {
