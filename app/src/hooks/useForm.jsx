@@ -9,7 +9,10 @@ const types = {
         error: "* Preencha um e-mail válido (email@domínio)!"
     },
     password: {
-        regexp: /^.{6,}.*[!@#$%^&*()_+|~=`{}\[\]:";'<>?,./\\-]$/,
+        regexp: /^(?=.*\d)(?=.*[a-zA-Z])(?=.*\W)[\d\w\W]{6,20}$/
+
+
+        ,
         error: "* Senha fraca, use no mínimo 6 dígitos e um caracter especial (!,?,@,#,$,%,&,*) "
     }
 }
@@ -20,12 +23,15 @@ const useForm = (type) => {
   function testValue(text) {
     if(text.length === 0) {
         setErro('Preencha o campo!');
+        return false;
     }
     else if(!types[type].regexp.test(text)) {
         setErro(types[type].error);
+        return false;
     }
     else {
         setErro(null);
+        return true;
     }
   }
   const onBlur = ({target}) => {
