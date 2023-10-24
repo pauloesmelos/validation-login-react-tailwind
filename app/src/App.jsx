@@ -3,11 +3,26 @@ import Button from './components/button/Button';
 import Input from './components/form/Input';
 import Techs from './components/imagem/Techs';
 import User from './components/imagem/User';
+import useForm from './hooks/useForm';
 
 const App = () => {
+  /* const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState(''); */
+  const validateName = useForm('name');
+  const validaEmail = useForm('email');
+  const validatePassword = useForm('password');
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("enviado");
   }
+  const handleChange = (event) => {
+
+  }
+  React.useEffect(() => {
+    
+  }, [validaEmail]);
   return (
     <>
       <main className="flex justify-center">
@@ -24,6 +39,10 @@ const App = () => {
                 id="name"
                 label="Nome: "
                 placeholder="Nome"
+                value={validateName.value}
+                onChange={validateName.onChange}
+                onBlur={validateName.onBlur}
+                erro={validateName.erro}
             />
             <Input
                 type="email"
@@ -31,6 +50,10 @@ const App = () => {
                 id="email"
                 label="E-mail: "
                 placeholder="E-mail"
+                value={validaEmail.value}
+                onChange={validaEmail.onChange}
+                onBlur={validaEmail.onBlur}
+                erro={validaEmail.erro}
             />
             <Input
                 type="password"
@@ -38,6 +61,10 @@ const App = () => {
                 id="password"
                 label="Senha: "
                 placeholder="********"
+                value={validatePassword.value}
+                onChange={validatePassword.onChange}
+                onBlur={validatePassword.onBlur}
+                erro={validatePassword.erro}
             />
             <Button text="Cadastrar-se" />
           </div>
